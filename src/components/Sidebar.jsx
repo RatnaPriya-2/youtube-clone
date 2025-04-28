@@ -125,6 +125,7 @@ const Sidebar = () => {
               key={index}
               href={link.url}
               target="_blank"
+              rel="noreferrer"
               className="mr-[4px] md:mr-[7px] text-[5px] md:text-[13px] font-semibold text-[#6d6c6c]"
             >
               {link.name}

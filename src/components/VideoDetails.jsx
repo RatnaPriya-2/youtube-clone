@@ -45,7 +45,7 @@ const VideoDetails = () => {
 
   useEffect(() => {
     setCategory(categoryId);
-  }, [categoryId]);
+  }, [categoryId, setCategory]);
 
   return (
     <>

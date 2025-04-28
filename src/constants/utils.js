@@ -109,12 +109,12 @@ export const footerLinks = [
 const BASE_URL = "https://www.googleapis.com/youtube/v3/videos?";
 export const API_KEY = "AIzaSyCC1Oogur7kLeUfqYPdq-e6eWImH3fvIpk";
 
-const TABS = {
-  Home: `${BASE_URL}?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=US&maxResults=20&key=${API_KEY}`,
-  Music: `${BASE_URL}?part=snippet,contentDetails,statistics&chart=mostPopular&videoCategoryId=10&regionCode=US&maxResults=20&key=${API_KEY}`,
-  Kids: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=kids&regionCode=US&type=video&maxResults=50&key=${API_KEY}`,
-  Premium: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=premium%20exclusive&regionCode=US&type=video&maxResults=50&key=${API_KEY}`,
-};
+// const TABS = {
+//   Home: `${BASE_URL}?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=US&maxResults=20&key=${API_KEY}`,
+//   Music: `${BASE_URL}?part=snippet,contentDetails,statistics&chart=mostPopular&videoCategoryId=10&regionCode=US&maxResults=20&key=${API_KEY}`,
+//   Kids: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=kids&regionCode=US&type=video&maxResults=50&key=${API_KEY}`,
+//   Premium: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=premium%20exclusive&regionCode=US&type=video&maxResults=50&key=${API_KEY}`,
+// };
 
 export const homeUrl =
   "https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=US&maxResults=20&key=AIzaSyCC1Oogur7kLeUfqYPdq-e6eWImH3fvIpk";
