@@ -35,14 +35,14 @@ const VideoCard = ({ video }) => {
     const fetchVideoDetails = async () => {
       try {
         const { data } = await axios.get(
-          `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${video.id}&key=${API_KEY}`
+          `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${video.id}&key=${API_KEY}`
         );
         setVideoDetails(data?.items[0]);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchVideoDetails();
+    fetchVideoDetails(); 
   }, [video]);
 
   const navigateAndSendData = () => {
@@ -50,6 +50,8 @@ const VideoCard = ({ video }) => {
       state: { channelInfo: channelDetails, videoInfo: videoDetails },
     });
   };
+
+  console.log(videoDetails)
 
   return (
     <div
@@ -63,7 +65,7 @@ const VideoCard = ({ video }) => {
           className=" h-[100px] xs:h-[140px] sm:h-[150px] md:h-[200px] lg:h-[230px] w-full object-cover"
         />
         <span className="absolute bottom-2 right-2 px-[5px] py-[1px] rounded-sm bg-black/60 text-white text-[8px] md:text-[12px]">
-          {duration_convertor(video?.contentDetails?.duration)}
+          {duration_convertor(videoDetails?.contentDetails?.duration)}
         </span>
       </div>
       <div className="flex flex-row gap-3">

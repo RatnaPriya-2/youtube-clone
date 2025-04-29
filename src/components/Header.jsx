@@ -26,7 +26,7 @@ const Header = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchTerm}&type=video&maxResults=50&key=${API_KEY}`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchTerm}&type=video&videoDuration=medium&maxResults=50&key=${API_KEY}`
       );
 
       const videoIds = data.items.map((item) => item.id.videoId).join(",");

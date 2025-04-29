@@ -133,7 +133,7 @@ export function duration_convertor(ptString) {
     const seconds = duration.seconds().toString().padStart(2, "0");
 
     if (hours > 0) {
-      return `${hours.toString().padStart(2, "0")}:${minutes}:${seconds}`;
+      return `${hours.toString()}:${minutes}:${seconds}`;
     } else {
       return `${minutes}:${seconds}`;
     }
