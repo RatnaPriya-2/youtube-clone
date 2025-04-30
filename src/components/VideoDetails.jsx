@@ -17,7 +17,8 @@ import { useGlobalContext } from "../Context";
 import RecommendedVideoCard from "./RecommendedVideoCard";
 
 const VideoDetails = () => {
-  const { setCategory, searchResults } = useGlobalContext();
+  const { showSidebar } = useGlobalContext();
+  const { setCategory, category,searchResults } = useGlobalContext();
   const location = useLocation();
   const { categoryId, videoId } = useParams();
   const { channelInfo, videoInfo } = location.state || {};
@@ -28,7 +29,7 @@ const VideoDetails = () => {
     const getComments = async () => {
       try {
         const { data } = await axios.get(
-          `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&maxResults=20&key=${API_KEY}`
+          `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&maxResults=1&key=${API_KEY}`
         );
 
         setComments(
@@ -47,14 +48,23 @@ const VideoDetails = () => {
     setCategory(categoryId);
   }, [categoryId, setCategory]);
 
+  console.log(category)
+
   return (
     <>
+      <div
+        className={`${
+          showSidebar
+            ? `absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,0.5)]`
+            : ""
+        }`}
+      ></div>
       <div className="flex flex-row justify-center gap-7 w-full border py-2 md:py-5 px-2 md:px-5 lg:px-16">
         <div className="w-full md:max-w-[850px] h-full ">
           <div>
             <iframe
               src={`https://www.youtube.com/embed/${videoId}`}
-              title="Keema Puri I Special Breakfast I How to make Keema Puri"
+              title=""
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
@@ -124,13 +134,15 @@ const VideoDetails = () => {
                       alt=""
                       className="w-2 h-2 md:w-6 md:h-6"
                     />
-                    <span className="text-[6px] md:text-[15px]font-medium">
+                    <span className="text-[6px] md:text-[15px] font-medium">
                       Share
                     </span>
                   </div>
                   <div className="clip flex flex-row items-center px-[6px] md:px-4 py-[3px] md:py-[7px] gap-[3px] md:gap-2 bg-[#f0f0f0] rounded-full">
                     <img src={cut} alt="" className="w-2 h-2 md:w-6 md:h-6" />
-                    <span className="text-[6px] md:text-[15px]">Clip</span>
+                    <span className="text-[6px] md:text-[15px] font-medium">
+                      Clip
+                    </span>
                   </div>
                   <div className="flex items-center justify-center  md:h-10 md:w-10 px-1 bg-[#f0f0f0] rounded-full">
                     <img src={dots} alt="" className="w-2 h-2 md:w-6 md:h-6" />

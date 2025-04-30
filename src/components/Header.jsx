@@ -45,7 +45,9 @@ const Header = () => {
   return (
     <>
       {showSidebar ? <Sidebar /> : ""}
-      <div className="flex flex-row items-center justify-between px-1 md:px-3 lg:px-5 h-6 md:h-14 bg-white">
+      <div
+        className={`flex flex-row items-center justify-between px-1 md:px-3 lg:px-5 h-6 md:h-14 bg-white `}
+      >
         <div className="flex flex-row items-center gap-1 md:gap-2 lg:gap-4 h-full">
           <div
             className=" hover:bg-[#e5e5e5] transition-all duration-300 p-1 md:p-2 rounded-full cursor-pointer"

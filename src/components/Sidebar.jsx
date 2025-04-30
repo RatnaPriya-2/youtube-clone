@@ -21,6 +21,7 @@ const Sidebar = () => {
         showSidebar ? "left-0" : "left-[100%]"
       } transition-all duration-1000 md:pt-2 md:pb-2 bg-white`}
     >
+   
       <div className="flex flex-row items-center md:px-3 lg:px-5  md:gap-2 lg:gap-4 h-6 md:h-14">
         <div
           className=" hover:bg-[#e5e5e5] transition-all duration-300 p-2 rounded-full cursor-pointer"

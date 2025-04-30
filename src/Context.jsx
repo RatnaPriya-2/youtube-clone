@@ -11,6 +11,7 @@ const AppProvider = ({ children }) => {
 
   const fetchCategoryData = (id) => {
     setLoading(true);
+    fetchDataFromApi(id).then((res) => console.log(res));
     fetchDataFromApi(id).then((res) => setSearchResults(res));
     setLoading(false);
   };
@@ -18,6 +19,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     fetchCategoryData(category);
   }, [category]);
+  console.log(category)
 
   console.log(searchResults);
 
@@ -28,6 +30,7 @@ const AppProvider = ({ children }) => {
         setShowSidebar,
         searchResults,
         setSearchResults,
+        category,
         setCategory,
         loading,
         setLoading,

@@ -46,7 +46,7 @@ const VideoCard = ({ video }) => {
   }, [video]);
 
   const navigateAndSendData = () => {
-    navigate(`/videoDetails/${video.snippet.categoryId}/${video.id}`, {
+    navigate(`/videoDetails/${video?.snippet.categoryId}/${video?.id}`, {
       state: { channelInfo: channelDetails, videoInfo: videoDetails },
     });
   };
@@ -71,7 +71,7 @@ const VideoCard = ({ video }) => {
       <div className="flex flex-row gap-3">
         <div className="rounded-full w-4 h-4 md:w-10 md:h-10">
           <img
-            src={channelDetails?.snippet.thumbnails.default.url}
+            src={channelDetails?.snippet?.thumbnails?.default?.url}
             alt="channel-pic"
             className="rounded-full"
           />

@@ -12,8 +12,10 @@ import {
 
 import moment from "moment";
 import axios from "axios";
+import { useGlobalContext } from "../Context";
 
 const RecommendedVideoCard = ({ video }) => {
+  const { showSidebar } = useGlobalContext();
   const [channelDetails, setChannelDetails] = useState(null);
   const [videoDetails, setVideoDetails] = useState(null);
   const navigate = useNavigate();
@@ -40,10 +42,10 @@ const RecommendedVideoCard = ({ video }) => {
 
     const fetchVideoDetails = async () => {
       try {
-        const { data } = await axios.get(
-          `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${video.id}&key=${API_KEY}`
+        const { data: videoData } = await axios.get(
+          `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${video.id}&key=${API_KEY}`
         );
-        setVideoDetails(data?.items[0]);
+        setVideoDetails(videoData?.items[0]);
       } catch (error) {
         console.log(error);
       }
@@ -62,20 +64,22 @@ const RecommendedVideoCard = ({ video }) => {
           className="md:w-[168px] md:h-[100px]  object-fill"
         />
         <span className="absolute bottom-1 right-1 md:bottom-2 md:right-2 px-[5px] py-[1px] rounded-sm bg-black/60 text-white text-[6px] md:text-[12px]">
-          {duration_convertor(video?.contentDetails.duration)}
+          {duration_convertor(videoDetails?.contentDetails.duration)}
         </span>
       </div>
 
       <div className="flex flex-row flex-1 justify-between gap-3">
         <div className="flex-1 ">
-          <p className="text-[8px]  md:text-[14px]  font-medium text-[#0f0f0f] ">
+          <p className="text-[8px]  md:text-[14px] font-medium text-[#0f0f0f] ">
             {video?.snippet?.title.length > 50
               ? video?.snippet?.title.slice(0, 50) + "..."
               : video?.snippet.title}
           </p>
           <div className="flex flex-row items-center gap-1 md:gap-2 mt-0 md:mt-1 ">
             <span className="font-normal text-[6px] md:text-[12px] text-[#606060] w-max lg:line-clamp-2  ">
-              {video?.snippet?.channelTitle}
+              {video?.snippet?.channelTitle.length > 15
+                ? video?.snippet?.channelTitle.slice(0, 15) + "..."
+                : video?.snippet.channelTitle}
             </span>
             <img
               src={check}
