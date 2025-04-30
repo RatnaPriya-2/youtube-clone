@@ -12,10 +12,8 @@ import {
 
 import moment from "moment";
 import axios from "axios";
-import { useGlobalContext } from "../Context";
 
 const RecommendedVideoCard = ({ video }) => {
-  const { showSidebar } = useGlobalContext();
   const [channelDetails, setChannelDetails] = useState(null);
   const [videoDetails, setVideoDetails] = useState(null);
   const navigate = useNavigate();
